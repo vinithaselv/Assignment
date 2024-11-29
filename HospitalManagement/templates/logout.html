@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-size: cover;
+        }
+
+        div{
+            font-family: fantasy;          
+            color: white;
+            margin: 20px;
+            padding: 50px;
+            width: 25rem;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+            border-radius: 10px;
+            text-shadow: 2px 2px 5px rgb(0, 153, 255);
+        }
+        span{        
+            font-size: 50px;
+            position: fixed;
+            left: 35%;
+            top: 20%;
+        }
+        a{
+            position: fixed;
+            left: 38%;
+            top: 70%;
+            color: white;
+            
+        }
+       
+    </style>
+</head>
+<body  background="{% static 'images/logout.png' %}"> 
+
+    <div>
+        <span> LOGOUT </span><br><br>
+        <a href="{% url 'loginPage' %}" > Back to Login Page </a>
+    </div>
+    
+</body>
+</html>

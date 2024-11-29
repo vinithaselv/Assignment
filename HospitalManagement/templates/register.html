@@ -1,0 +1,126 @@
+
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<style>
+    body {
+        background-size: cover;
+        background-image: url("{% static 'images/home.png' %}");
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+    }
+    form{ 
+        background-color:darkgray; 
+        opacity: 0.8; 
+        width: 750px; 
+        border: 1px solid rgba(255, 255, 255, 0.915); 
+        padding: 50px; 
+        border-radius: 25px; 
+        margin: auto; 
+        font-family: 'Times New Roman', Times, serif; 
+        font-size: bold; 
+    }
+   
+    
+    /*.form-group {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        padding: 10px 10px;
+        margin: 15px;
+    }
+    .form-group input {
+        width: 15rem;
+    }
+    .form-group label {
+        flex: 1;
+    }
+    .form-group-inline {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .form-group-inline label {
+        margin-left: 50px;
+    }*/
+    
+    button {
+        display: block;
+        border-radius: 3px;
+        width: 80px;
+        margin-left: 35%;
+        color: rgb(3, 2, 5);
+        background-color: skyblue;
+        text-shadow: 3px;
+        box-sizing: border-box;
+    } 
+    h1{
+        font-weight: bold;
+        text-align: center;
+    }
+    label{
+        font-weight: bold;
+    }
+    
+</style>
+
+{% block content %}
+
+<div class="container justify-content-center">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row mt-3">
+            <h1> SIGNUP PAGE </h1>
+        </div>
+        <div class="row mt-3">
+            <div class="col mb-3">
+                <label class="form-label">User</label>
+                <input type="text" class="form-control" name="username" aria-describedby="emailHelp" required autofocus>
+                {% if error %}
+                    <p>{{error}}</p>
+                {% endif %}
+            </div>
+            <div class="col mb-3">
+                <label class="form-label">First Name</label>
+                <input type="text" class="form-control" name="firstName" aria-describedby="emailHelp" required>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lastName" aria-describedby="emailHelp" required>
+            </div>
+            <div class="col mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="Email" aria-describedby="emailHelp" required>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col mb-3">
+                <label class="form-label">Age</label>
+                <input type="number" class="form-control" name="Age" aria-describedby="emailHelp" required>
+            </div>
+            <div class="col mb-3">
+                <label class="form-label">Role</label>
+                <select class="form-select" name="role" id="inputGroupSelect01">
+                    <option selected>Choose...</option>
+                    <option value="0">Admin</option>
+                    <option value="1">Doctor</option>
+                    <option value="2">Patient</option>
+                </select>
+            </div>
+        </div>
+        <div class="col mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="Password" class="form-control" aria-describedby="passwordHelpBlock">
+        </div>
+        <button type="submit" class="btn btn-primary ">Submit</button>
+    </form>
+</div> 
+
+{% endblock %}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    
+    
+    <title>Document</title>
+    <style>
+       body{
+            font-family:ti;      
+            background-size: cover;
+            transition: all .5s;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        .sidebar{
+            position: fixed;
+            left: -300px;
+            width: 300px;
+            height: 100%;
+            background-color:lightslategrey;
+            transition: all .5s ease;
+        }
+        .sidebar header{
+            font-size: 25px;
+            color: white;
+            text-align: center;
+            line-height: 70px;
+            background-color: rgb(122, 134, 145);
+            user-select: none;
+        }
+        .sidebar ul a{
+            font-family: Georgia, 'Times New Roman', Times, seri;
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 65px;
+            font-size: 20px;
+            color: white;
+            padding-left: 30px;
+            box-sizing: border-box;
+            background-origin: 1px solid rgb(255,255,255,1);
+            border-bottom: 1px solid black;
+        }
+        li a{
+            text-decoration: none;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        ul li:hover a{
+            padding-left: 50px;
+        }
+        
+        #check{
+            display: none;
+        }
+        label #btn,label #cancel{
+            position: absolute;
+            cursor: pointer;
+            background-color: gray;
+            
+        }
+        label #btn{
+            left:50px;
+            top:25px;
+            font-size: 35px; 
+            padding: 6px 12px;
+            color: white;
+            transition: all .5s;
+        }
+        label #cancel{
+            z-index: 1111;
+            left: -220px;
+            top:17px;
+            font-size: 30px;
+            color:white;
+            padding: 4px 9px;
+            transition: all .5s ease;
+            
+        }
+        #check:checked ~ .sidebar{
+            left: 0;
+        }
+        #check:checked ~ label #btn{
+            left:250px;
+            opacity: 0;
+            pointer-events: none;
+        }
+        #check:checked ~ label #cancel{
+            left: 220px;
+        }
+        #check:checked ~ body{
+            left: 250px;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            
+        }
+       
+        #book{
+            position: absolute;
+            left: 30%;
+            bottom: 40%;
+            color:black;
+            line-height: 50px;
+            text-shadow: 2px 2px 5px rgb(0, 153, 255);
+           
+        }
+        #appoint{
+            position: absolute;
+            left: 60%;
+            color:black;
+            bottom: 40%;
+            line-height: 50px;
+            text-shadow: 2px 2px 5px rgb(0, 153, 255);
+        }
+        #logout{
+            position: absolute;
+            left: 45%;
+            color:black;
+            bottom: 20%; 
+            line-height: 50px;
+            text-shadow: 2px 2px 5px rgb(0, 153, 255);
+            
+        }
+        .text {
+            font-size: 25px; 
+            
+        }
+
+
+    </style>
+</head>
+<body background="{% static 'images/patient.png' %}">
+    <input type="checkbox" id="check">
+    <label for="check">
+        <span class="fa-solid fa-bars" id="btn"></span>
+        <span class="fa-regular fa-rectangle-xmark" id="cancel"></span>
+    </label>
+    <div class="sidebar">
+        <header> PATIENT </header>
+        <ul>
+            <li ><a href="{% url 'bookappinments' %}" > <i class="fa-solid fa-bookmark"></i> <span>BOOK AN APPOINMENT</span> </a></li>
+            <li><a href="{% url 'myappoinment' %}"> <i class="fa-solid fa-paperclip"></i> <span>MY APPOINMENT </span></a></li>
+            <!-- <li ><a href="#"><i class="fa-solid fa-pills"></i> PRESCRIPTIONS </a></li>  -->
+            <li ><a href="{% url 'logout' %}"><i class="fa-solid fa-right-from-bracket"></i> <span >LOGOUT</span> </a></li> 
+
+        </ul>
+    </div>
+
+    <div id="cont">
+        <center><span style="font-size: 50px;position: absolute; top: 10%;right: 30%; color:white;font-family: fantasy; text-shadow: 2px 2px 5px red;" > WELCOME TO PATIENT DASHBOARD </span></center>
+        <div>
+            <a href="{% url 'bookappinments' %}" id="book"> 
+                <i class="fa-solid fa-bookmark fa-6x"></i><br>
+                 <span class="text">BOOK AN APPOINMENT </span></a><br>
+            <a href="{% url 'myappoinment' %}" id="appoint"> 
+                <i class="fa-solid fa-paperclip fa-6x"></i> <br>
+                <span  class="text">MY APPOINMENT</span> 
+            </a><br>
+            <!-- <li ><a href="#"><i class="fa-solid fa-pills"></i> PRESCRIPTIONS </a></li>  -->
+            <a href="{% url 'logout' %}"  id="logout">
+                <i class="fa-solid fa-right-from-bracket fa-6x"></i> <br>
+                <span  class="text">LOGOUT</span> 
+            </a><br>
+        </div>
+    </div>
+
+    
+</body>
+</html>
